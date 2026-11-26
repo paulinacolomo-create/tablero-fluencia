@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centro de ventas | Demostración FluencIA</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --brand-600:#E5158C; --brand-700:#CA127B; --brand-900:#7E0C4D;
+  --brand-100:#FCDBEE; --brand-50:#FEF3F9;
+  --ink-900:#1D1620; --ink-700:#533F5B; --ink-500:#9A7DA6;
+  --paper:#F8F1F1; --surface:#FFFFFF; --line:#E8D0D0;
+  --jade:#1E765D; --amber:#976211;
+  --font-display:"General Sans",ui-sans-serif,system-ui,sans-serif;
+  --font-body:"Inter",ui-sans-serif,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink-900);font-family:var(--font-body);font-size:15px;line-height:1.5}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;color:var(--ink-900)}
+.wrap{max-width:1180px;margin:0 auto;padding:32px 24px 64px}
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding-bottom:20px}
+.overline{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-700);font-weight:600}
+h1{font-size:30px;line-height:1.15;margin-top:6px}
+.demo-tag{background:var(--brand-100);color:var(--brand-900);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:500;white-space:nowrap}
+nav{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:28px}
+nav button{background:none;border:0;border-bottom:2px solid transparent;padding:12px 18px;font:500 15px var(--font-body);color:var(--ink-700);cursor:pointer;margin-bottom:-1px}
+nav button:hover{color:var(--ink-900)}
+nav button[aria-selected="true"]{color:var(--brand-700);border-bottom-color:var(--brand-600)}
+section.tab{display:none}
+section.tab.on{display:block}
+.grid{display:grid;gap:16px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--surface);border-radius:16px;padding:22px}
+.card h2{font-size:18px;margin-bottom:4px}
+.sub{color:var(--ink-700);font-size:14px;margin-bottom:16px}
+.kpi .label{font-size:13px;color:var(--ink-700)}
+.kpi .num{font-family:var(--font-display);font-weight:600;font-size:34px;line-height:1.1;margin-top:6px}
+.kpi .note{font-size:13px;color:var(--ink-700);margin-top:4px}
+.section-title{font-size:20px;margin:32px 0 14px}
+.call{display:grid;grid-template-columns:84px 1fr auto;gap:20px;align-items:start}
+.call .time{font-family:var(--font-display);font-weight:600;font-size:22px}
+.call .who{font-weight:600}
+.call .meta{color:var(--ink-700);font-size:14px}
+.call p{font-size:14px;margin-top:10px;color:var(--ink-900)}
+.call .q{margin-top:10px;background:var(--brand-50);border-radius:10px;padding:10px 12px;font-size:14px}
+.score{text-align:center;min-width:76px}
+.score .n{font-family:var(--font-display);font-weight:600;font-size:28px;color:var(--brand-700);line-height:1}
+.score .t{font-size:12px;color:var(--ink-700);margin-top:4px}
+.chips{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.chip{background:var(--brand-100);color:var(--brand-900);border-radius:999px;padding:4px 12px;font-size:13px;font-weight:500}
+.chip.plain{background:var(--paper);color:var(--ink-700)}
+ul.tasks{list-style:none}
+ul.tasks li{display:grid;grid-template-columns:20px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
+ul.tasks li:first-child{border-top:0}
+.box{width:18px;height:18px;border:1.5px solid var(--ink-500);border-radius:5px}
+.due{font-size:13px;color:var(--ink-700)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-weight:600;color:var(--ink-700);font-size:13px;padding:0 12px 10px 0;border-bottom:1px solid var(--line)}
+td{padding:12px 12px 12px 0;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+td.r,th.r{text-align:right;padding-right:0}
+.stage{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.bars{display:grid;gap:10px}
+.brow{display:grid;grid-template-columns:150px 1fr 120px;gap:14px;align-items:center;font-size:14px}
+.brow .track{height:22px}
+.brow .track div{height:22px;border-radius:0 4px 4px 0;min-width:4px}
+.brow .val{text-align:right;color:var(--ink-700)}
+.docs .card h3{font-size:17px;margin-bottom:6px}
+.docs .card p{font-size:14px;color:var(--ink-700)}
+.docs .card .foot{margin-top:14px;font-size:13px;color:var(--ink-700)}
+.run{display:grid;grid-template-columns:1fr 150px 150px 110px;gap:16px;align-items:center;padding:14px 0;border-top:1px solid var(--line);font-size:14px}
+.run:first-of-type{border-top:0}
+.run .name{font-weight:600}
+.run .d{color:var(--ink-700);font-size:13px}
+.state{display:inline-flex;align-items:center;gap:8px;font-weight:500}
+.state i{width:9px;height:9px;border-radius:50%;background:var(--jade);display:inline-block}
+.colhead{display:grid;grid-template-columns:1fr 150px 150px 110px;gap:16px;font-size:13px;color:var(--ink-700);font-weight:600;padding-bottom:10px;border-bottom:1px solid var(--line)}
+#tip{position:fixed;pointer-events:none;background:var(--ink-900);color:#fff;font-size:13px;padding:6px 10px;border-radius:8px;opacity:0;transition:opacity .08s;z-index:9;white-space:nowrap}
+.legend{display:flex;gap:16px;font-size:13px;color:var(--ink-700);margin-top:10px}
+footer{margin-top:40px;font-size:13px;color:var(--ink-700)}
+@media (max-width:900px){
+  .g4{grid-template-columns:repeat(2,1fr)}.g3,.g2{grid-template-columns:1fr}
+  .call{grid-template-columns:1fr}
+  .brow{grid-template-columns:110px 1fr 90px}
+  .run,.colhead{grid-template-columns:1fr 1fr}
+  header{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <div class="overline">Centro de ventas</div>
+      <h1>Constructora Horizonte</h1>
+    </div>
+    <div class="demo-tag">Datos de ejemplo, empresa ficticia</div>
+  </header>
+
+  <nav role="tablist" aria-label="Secciones">
+    <button role="tab" aria-selected="true" data-tab="hoy">Hoy</button>
+    <button role="tab" aria-selected="false" data-tab="pipeline">Pipeline</button>
+    <button role="tab" aria-selected="false" data-tab="docs">Documentos</button>
+    <button role="tab" aria-selected="false" data-tab="auto">Automatizaciones</button>
+  </nav>
+
+  <!-- HOY -->
+  <section class="tab on" id="hoy">
+    <div class="grid g4">
+      <div class="card kpi"><div class="label">Llamadas hoy</div><div class="num">3</div><div class="note">Con resumen listo</div></div>
+      <div class="card kpi"><div class="label">Tareas de hoy</div><div class="num">5</div><div class="note">2 vencen antes de las 12:00</div></div>
+      <div class="card kpi"><div class="label">Deals abiertos</div><div class="num">28</div><div class="note">6 sin contacto en 7 días</div></div>
+      <div class="card kpi"><div class="label">Valor del pipeline</div><div class="num">$2.4 M</div><div class="note">Pesos mexicanos</div></div>
+    </div>
+
+    <h2 class="section-title">Llamadas de hoy</h2>
+    <div class="grid">
+      <div class="card call">
+        <div class="time">10:30</div>
+        <div>
+          <div class="who">Laura Méndez, directora de operaciones</div>
+          <div class="meta">Aceros del Norte · Monterrey · 85 empleados</div>
+          <p>Fabrica estructuras metálicas. Cotizan y dan seguimiento por correo y hojas de cálculo sueltas. Hace 2 semanas pidió información sobre automatizar cotizaciones.</p>
+          <div class="q">Pregunta sugerida: ¿cuántas horas a la semana se van en armar una cotización y darle seguimiento?</div>
+          <div class="chips"><span class="chip">Hoja de leads</span><span class="chip">Sitio web</span><span class="chip">LinkedIn</span><span class="chip plain">Última interacción: 11 nov</span></div>
+        </div>
+        <div class="score"><div class="n">82</div><div class="t">Encaje con el cliente ideal</div></div>
+      </div>
+      <div class="card call">
+        <div class="time">13:00</div>
+        <div>
+          <div class="who">Andrés Ruiz, gerente general</div>
+          <div class="meta">Logística Sierra · Chihuahua · 40 empleados</div>
+          <p>Transporte de carga regional. Llegó por la publicación del jueves. Todavía no sabe qué quiere automatizar, solo que pierde tiempo en reportes.</p>
+          <div class="q">Pregunta sugerida: ¿qué reporte les cuesta más trabajo sacar cada semana?</div>
+          <div class="chips"><span class="chip">Sitio web</span><span class="chip">LinkedIn</span><span class="chip plain">Primera llamada</span></div>
+        </div>
+        <div class="score"><div class="n">74</div><div class="t">Encaje con el cliente ideal</div></div>
+      </div>
+      <div class="card call">
+        <div class="time">16:30</div>
+        <div>
+          <div class="who">Sofía Valdés, socia</div>
+          <div class="meta">Estudio Cantera · Guadalajara · 22 empleados</div>
+          <p>Despacho de arquitectura. Ya vio la propuesta. Objeción pendiente: miedo a que el equipo no use la herramienta.</p>
+          <div class="q">Pregunta sugerida: ¿quién del equipo sería la primera persona en probarla?</div>
+          <div class="chips"><span class="chip">Propuesta enviada</span><span class="chip">Transcripción anterior</span><span class="chip plain">Última interacción: 21 nov</span></div>
+        </div>
+        <div class="score"><div class="n">91</div><div class="t">Encaje con el cliente ideal</div></div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Tareas principales</h2>
+    <div class="card">
+      <ul class="tasks">
+        <li><span class="box"></span><span>Enviar propuesta ajustada a Transportes Delta</span><span class="due">Hoy, 11:00</span></li>
+        <li><span class="box"></span><span>Dar seguimiento a Maquiladora Río Bravo (sin respuesta, 9 días)</span><span class="due">Hoy, 12:00</span></li>
+        <li><span class="box"></span><span>Revisar el resumen de la llamada con Grupo Pinar</span><span class="due">Hoy</span></li>
+        <li><span class="box"></span><span>Agendar segunda llamada con Estudio Cantera</span><span class="due">Hoy</span></li>
+        <li><span class="box"></span><span>Preparar la presentación para Aceros del Norte</span><span class="due">Mañana</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PIPELINE -->
+  <section class="tab" id="pipeline">
+    <div class="grid g4">
+      <div class="card kpi"><div class="label">Reuniones esta semana</div><div class="num">9</div><div class="note">Mejor semana del mes</div></div>
+      <div class="card kpi"><div class="label">Tasa de cierre</div><div class="num">24%</div><div class="note">Últimos 90 días</div></div>
+      <div class="card kpi"><div class="label">Ciclo de venta</div><div class="num">31 días</div><div class="note">Promedio</div></div>
+      <div class="card kpi"><div class="label">Cerrado este mes</div><div class="num">$310 k</div><div class="note">2 clientes nuevos</div></div>
+    </div>
+
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card">
+        <h2>Deals por etapa</h2>
+        <div class="sub">Cantidad de deals y valor</div>
+        <div class="bars" id="stages"></div>
+      </div>
+      <div class="card">
+        <h2>Reuniones agendadas por semana</h2>
+        <div class="sub">Últimas 8 semanas</div>
+        <div id="weeks"></div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Deals activos</h2>
+    <div class="card">
+      <table>
+        <thead><tr><th>Empresa</th><th>Contacto</th><th>Etapa</th><th>Siguiente paso</th><th>Último contacto</th><th class="r">Valor</th></tr></thead>
+        <tbody id="deals"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- DOCUMENTOS -->
+  <section class="tab" id="docs">
+    <p class="sub" style="font-size:15px">Todo lo que el equipo y Claude necesitan para vender igual que tú, en un solo lugar.</p>
+    <div class="grid g3 docs">
+      <div class="card"><h3>Cliente ideal</h3><p>Industria, tamaño, cargo de quien decide y señales de que la empresa necesita automatizar.</p><div class="foot">Actualizado el 12 nov</div></div>
+      <div class="card"><h3>Oferta</h3><p>Qué incluye cada paquete, qué resultado se promete y cuánto cuesta.</p><div class="foot">Actualizado el 3 nov</div></div>
+      <div class="card"><h3>Posicionamiento y objeciones</h3><p>Cómo se explica lo que hacemos y cómo se responde a "es muy caro" o "mi equipo no lo va a usar".</p><div class="foot">Actualizado el 18 nov</div></div>
+      <div class="card"><h3>Proceso de ventas</h3><p>Las etapas, qué pasa en cada una y cuándo un deal avanza o se descarta.</p><div class="foot">Actualizado el 3 nov</div></div>
+      <div class="card"><h3>Tono de voz</h3><p>Cómo escribimos correos y mensajes: cercano, concreto y sin tecnicismos.</p><div class="foot">Actualizado el 20 oct</div></div>
+      <div class="card"><h3>Plantillas</h3><p>Correo de primer contacto, seguimiento, propuesta y resumen de una página para el cliente.</p><div class="foot">6 plantillas</div></div>
+    </div>
+  </section>
+
+  <!-- AUTOMATIZACIONES -->
+  <section class="tab" id="auto">
+    <div class="card">
+      <h2>Rutinas que trabajan solas</h2>
+      <div class="sub">Se ejecutan sin que nadie las active y dejan todo registrado en la bóveda.</div>
+      <div class="colhead"><span>Rutina</span><span>Cuándo corre</span><span>Última vez</span><span>Estado</span></div>
+      <div class="run"><div><div class="name">Rutina de la mañana</div><div class="d">Revisa calendario, correos y llamadas de ayer, y prepara las llamadas del día.</div></div><span>Todos los días, 7:00</span><span>Hoy, 7:00</span><span class="state"><i></i>Activa</span></div>
+      <div class="run"><div><div class="name">Sincronización del CRM</div><div class="d">Actualiza la etapa de cada deal y marca los que llevan días sin respuesta.</div></div><span>Todos los días, 7:30</span><span>Hoy, 7:31</span><span class="state"><i></i>Activa</span></div>
+      <div class="run"><div><div class="name">Seguimiento después de cada llamada</div><div class="d">Escribe el borrador del correo de seguimiento y la propuesta.</div></div><span>Al terminar una llamada</span><span>Ayer, 17:42</span><span class="state"><i></i>Activa</span></div>
+      <div class="run"><div><div class="name">Calificación de llamadas</div><div class="d">Califica cada llamada y deja notas para mejorar la siguiente.</div></div><span>Lunes a viernes, 18:00</span><span>Ayer, 18:00</span><span class="state"><i></i>Activa</span></div>
+      <div class="run"><div><div class="name">Reporte mensual</div><div class="d">Resume el mes: reuniones, cierres, ingresos y qué ajustar.</div></div><span>Día 1 de cada mes</span><span>1 nov, 8:00</span><span class="state"><i></i>Activa</span></div>
+      <div class="run"><div><div class="name">Actualización de este tablero</div><div class="d">Reconstruye esta página con lo último de la bóveda.</div></div><span>Todos los días, 8:00</span><span>Hoy, 8:00</span><span class="state"><i></i>Activa</span></div>
+    </div>
+  </section>
+
+  <footer>Demostración de FluencIA. Todos los nombres, cifras y empresas son inventados para mostrar cómo quedaría el sistema.</footer>
+</div>
+<div id="tip"></div>
+
+<script>
+const stages=[
+  {n:"Nuevo",c:9,v:380,col:"#F4A3D0"},
+  {n:"Contactado",c:7,v:520,col:"#EE6FB6"},
+  {n:"Llamada agendada",c:5,v:610,col:"#E5158C"},
+  {n:"Propuesta enviada",c:4,v:480,col:"#CA127B"},
+  {n:"Negociación",c:3,v:410,col:"#A10F63"},
+  {n:"Cerrado ganado",c:2,v:310,col:"#7E0C4D"}
+];
+const weeks=[3,5,4,6,7,5,8,9];
+const wl=["S1","S2","S3","S4","S5","S6","S7","S8"];
+const deals=[
+  ["Aceros del Norte","Laura Méndez","Llamada agendada","Llamada hoy 10:30","11 nov",180],
+  ["Estudio Cantera","Sofía Valdés","Propuesta enviada","Resolver objeción del equipo","21 nov",220],
+  ["Transportes Delta","Iván Soto","Negociación","Enviar propuesta ajustada","22 nov",260],
+  ["Grupo Pinar","Marisol Haro","Negociación","Revisar resumen de llamada","24 nov",150],
+  ["Logística Sierra","Andrés Ruiz","Llamada agendada","Llamada hoy 13:00","24 nov",120],
+  ["Maquiladora Río Bravo","Pablo Luna","Contactado","Seguimiento, sin respuesta","16 nov",200],
+  ["Clínica Valle","Dra. Elena Ortiz","Propuesta enviada","Agendar segunda llamada","19 nov",140],
+  ["Distribuidora Mesa","Jorge Aranda","Nuevo","Primer correo","25 nov",90]
+];
+const colOf=Object.fromEntries(stages.map(s=>[s.n,s.col]));
+const fmt=n=>"$"+n+" k";
+const tip=document.getElementById("tip");
+function bindTips(root){
+  root.querySelectorAll("[data-tip]").forEach(el=>{
+    el.addEventListener("mousemove",e=>{tip.textContent=el.dataset.tip;tip.style.left=(e.clientX+14)+"px";tip.style.top=(e.clientY+14)+"px";tip.style.opacity=1});
+    el.addEventListener("mouseleave",()=>{tip.style.opacity=0});
+  });
+}
+// etapas
+const maxV=Math.max(...stages.map(s=>s.v));
+document.getElementById("stages").innerHTML=stages.map(s=>
+ `<div class="brow"><span>${s.n}</span><div class="track"><div data-tip="${s.n}: ${s.c} deals, ${fmt(s.v)}" style="width:${s.v/maxV*100}%;background:${s.col}"></div></div><span class="val">${s.c} deals · ${fmt(s.v)}</span></div>`).join("");
+// semanas
+(function(){
+  const W=480,H=210,pl=28,pb=26,pt=12,bw=34;
+  const max=10,ch=H-pb-pt,gap=(W-pl)/weeks.length;
+  let g="";
+  [0,5,10].forEach(t=>{const y=pt+ch-(t/max)*ch;g+=`<line x1="${pl}" x2="${W}" y1="${y}" y2="${y}" stroke="#E8D0D0" stroke-width="1"/><text x="${pl-8}" y="${y+4}" text-anchor="end" font-size="12" fill="#533F5B">${t}</text>`});
+  weeks.forEach((v,i)=>{
+    const h=v/max*ch,x=pl+i*gap+(gap-bw)/2,y=pt+ch-h;
+    g+=`<path data-tip="${wl[i]}: ${v} reuniones" d="M${x} ${y+h}V${y+4}Q${x} ${y} ${x+4} ${y}H${x+bw-4}Q${x+bw} ${y} ${x+bw} ${y+4}V${y+h}Z" fill="#E5158C"/>`;
+    g+=`<text x="${x+bw/2}" y="${H-8}" text-anchor="middle" font-size="12" fill="#533F5B">${wl[i]}</text>`;
+  });
+  document.getElementById("weeks").innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Reuniones agendadas por semana, últimas 8 semanas: ${weeks.join(', ')}">${g}</svg>`;
+})();
+// deals
+document.getElementById("deals").innerHTML=deals.map(d=>
+ `<tr><td><strong>${d[0]}</strong></td><td>${d[1]}</td><td><span class="stage"><span class="dot" style="background:${colOf[d[2]]}"></span>${d[2]}</span></td><td>${d[3]}</td><td>${d[4]}</td><td class="r">${fmt(d[5])}</td></tr>`).join("");
+bindTips(document);
+// pestañas
+document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll("nav button").forEach(x=>x.setAttribute("aria-selected",x===b));
+  document.querySelectorAll("section.tab").forEach(s=>s.classList.toggle("on",s.id===b.dataset.tab));
+}));
+</script>
+</body>
+</html>
