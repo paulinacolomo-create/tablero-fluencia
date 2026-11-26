@@ -26,8 +26,8 @@ header{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
 .overline{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-700);font-weight:600}
 h1{font-size:30px;line-height:1.15;margin-top:6px}
 .demo-tag{background:var(--brand-100);color:var(--brand-900);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:500;white-space:nowrap}
-nav{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:28px}
-nav button{background:none;border:0;border-bottom:2px solid transparent;padding:12px 18px;font:500 15px var(--font-body);color:var(--ink-700);cursor:pointer;margin-bottom:-1px}
+nav{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:28px;overflow-x:auto}
+nav button{background:none;border:0;border-bottom:2px solid transparent;padding:12px 18px;font:500 15px var(--font-body);color:var(--ink-700);cursor:pointer;margin-bottom:-1px;white-space:nowrap}
 nav button:hover{color:var(--ink-900)}
 nav button[aria-selected="true"]{color:var(--brand-700);border-bottom-color:var(--brand-600)}
 section.tab{display:none}
@@ -36,6 +36,7 @@ section.tab.on{display:block}
 .g4{grid-template-columns:repeat(4,1fr)}
 .g3{grid-template-columns:repeat(3,1fr)}
 .g2{grid-template-columns:repeat(2,1fr)}
+.mt{margin-top:16px}
 .card{background:var(--surface);border-radius:16px;padding:22px}
 .card h2{font-size:18px;margin-bottom:4px}
 .sub{color:var(--ink-700);font-size:14px;margin-bottom:16px}
@@ -57,9 +58,19 @@ section.tab.on{display:block}
 .chip.plain{background:var(--paper);color:var(--ink-700)}
 ul.tasks{list-style:none}
 ul.tasks li{display:grid;grid-template-columns:20px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
-ul.tasks li:first-child{border-top:0}
+ul.tasks li:first-child{border-top:0;padding-top:4px}
 .box{width:18px;height:18px;border:1.5px solid var(--ink-500);border-radius:5px}
 .due{font-size:13px;color:var(--ink-700)}
+ul.leads{list-style:none}
+ul.leads li{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
+ul.leads li:first-child{border-top:0;padding-top:4px}
+ul.leads .nm{font-weight:600}
+ul.leads .why{font-size:13px;color:var(--ink-700)}
+ul.leads .sc{font-family:var(--font-display);font-weight:600;font-size:22px;color:var(--brand-700);text-align:right;min-width:44px}
+ul.list{list-style:none}
+ul.list li{padding:12px 0;border-top:1px solid var(--line);font-size:14px}
+ul.list li:first-child{border-top:0;padding-top:4px}
+ul.list li strong{font-weight:600}
 table{width:100%;border-collapse:collapse;font-size:14px}
 th{text-align:left;font-weight:600;color:var(--ink-700);font-size:13px;padding:0 12px 10px 0;border-bottom:1px solid var(--line)}
 td{padding:12px 12px 12px 0;border-bottom:1px solid var(--line);vertical-align:middle}
@@ -72,9 +83,18 @@ td.r,th.r{text-align:right;padding-right:0}
 .brow .track{height:22px}
 .brow .track div{height:22px;border-radius:0 4px 4px 0;min-width:4px}
 .brow .val{text-align:right;color:var(--ink-700)}
+.srow{display:grid;grid-template-columns:170px 1fr 56px;gap:14px;align-items:center;font-size:14px}
+.srow .track{height:22px;background:var(--brand-50);border-radius:4px}
+.srow .track div{height:22px;border-radius:4px;background:var(--brand-600)}
+.srow .val{text-align:right;font-weight:600}
+.callout{margin-top:16px;background:var(--brand-50);border-radius:10px;padding:10px 12px;font-size:14px}
 .docs .card h3{font-size:17px;margin-bottom:6px}
 .docs .card p{font-size:14px;color:var(--ink-700)}
 .docs .card .foot{margin-top:14px;font-size:13px;color:var(--ink-700)}
+.tool .cat{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-700);font-weight:600}
+.tool h3{font-size:18px;margin:6px 0 6px}
+.tool p{font-size:14px;color:var(--ink-700)}
+.tool .state{margin-top:14px;font-size:13px}
 .run{display:grid;grid-template-columns:1fr 150px 150px 110px;gap:16px;align-items:center;padding:14px 0;border-top:1px solid var(--line);font-size:14px}
 .run:first-of-type{border-top:0}
 .run .name{font-weight:600}
@@ -82,13 +102,14 @@ td.r,th.r{text-align:right;padding-right:0}
 .state{display:inline-flex;align-items:center;gap:8px;font-weight:500}
 .state i{width:9px;height:9px;border-radius:50%;background:var(--jade);display:inline-block}
 .colhead{display:grid;grid-template-columns:1fr 150px 150px 110px;gap:16px;font-size:13px;color:var(--ink-700);font-weight:600;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.delta{font-size:13px;color:var(--jade);font-weight:500;margin-top:4px}
 #tip{position:fixed;pointer-events:none;background:var(--ink-900);color:#fff;font-size:13px;padding:6px 10px;border-radius:8px;opacity:0;transition:opacity .08s;z-index:9;white-space:nowrap}
-.legend{display:flex;gap:16px;font-size:13px;color:var(--ink-700);margin-top:10px}
 footer{margin-top:40px;font-size:13px;color:var(--ink-700)}
 @media (max-width:900px){
   .g4{grid-template-columns:repeat(2,1fr)}.g3,.g2{grid-template-columns:1fr}
   .call{grid-template-columns:1fr}
   .brow{grid-template-columns:110px 1fr 90px}
+  .srow{grid-template-columns:120px 1fr 44px}
   .run,.colhead{grid-template-columns:1fr 1fr}
   header{flex-direction:column;align-items:flex-start}
 }
@@ -108,7 +129,9 @@ footer{margin-top:40px;font-size:13px;color:var(--ink-700)}
     <button role="tab" aria-selected="true" data-tab="hoy">Hoy</button>
     <button role="tab" aria-selected="false" data-tab="pipeline">Pipeline</button>
     <button role="tab" aria-selected="false" data-tab="docs">Documentos</button>
+    <button role="tab" aria-selected="false" data-tab="stack">Herramientas</button>
     <button role="tab" aria-selected="false" data-tab="auto">Automatizaciones</button>
+    <button role="tab" aria-selected="false" data-tab="mensual">Reporte mensual</button>
   </nav>
 
   <!-- HOY -->
@@ -157,15 +180,28 @@ footer{margin-top:40px;font-size:13px;color:var(--ink-700)}
       </div>
     </div>
 
-    <h2 class="section-title">Tareas principales</h2>
-    <div class="card">
-      <ul class="tasks">
-        <li><span class="box"></span><span>Enviar propuesta ajustada a Transportes Delta</span><span class="due">Hoy, 11:00</span></li>
-        <li><span class="box"></span><span>Dar seguimiento a Maquiladora Río Bravo (sin respuesta, 9 días)</span><span class="due">Hoy, 12:00</span></li>
-        <li><span class="box"></span><span>Revisar el resumen de la llamada con Grupo Pinar</span><span class="due">Hoy</span></li>
-        <li><span class="box"></span><span>Agendar segunda llamada con Estudio Cantera</span><span class="due">Hoy</span></li>
-        <li><span class="box"></span><span>Preparar la presentación para Aceros del Norte</span><span class="due">Mañana</span></li>
-      </ul>
+    <div class="grid g2" style="margin-top:32px">
+      <div class="card">
+        <h2>Tareas principales</h2>
+        <div class="sub">Lo que conviene resolver hoy</div>
+        <ul class="tasks">
+          <li><span class="box"></span><span>Enviar propuesta ajustada a Transportes Delta</span><span class="due">Hoy, 11:00</span></li>
+          <li><span class="box"></span><span>Dar seguimiento a Maquiladora Río Bravo (sin respuesta, 9 días)</span><span class="due">Hoy, 12:00</span></li>
+          <li><span class="box"></span><span>Revisar el resumen de la llamada con Grupo Pinar</span><span class="due">Hoy</span></li>
+          <li><span class="box"></span><span>Agendar segunda llamada con Estudio Cantera</span><span class="due">Hoy</span></li>
+          <li><span class="box"></span><span>Preparar la presentación para Aceros del Norte</span><span class="due">Mañana</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Leads prioritarios</h2>
+        <div class="sub">Ordenados por encaje y cercanía al cierre</div>
+        <ul class="leads">
+          <li><div><div class="nm">Estudio Cantera</div><div class="why">Ya vio la propuesta. Falta resolver la objeción del equipo.</div></div><div class="sc">91</div></li>
+          <li><div><div class="nm">Transportes Delta</div><div class="why">En negociación. Pidió ajustar el precio de la propuesta.</div></div><div class="sc">88</div></li>
+          <li><div><div class="nm">Aceros del Norte</div><div class="why">Llamada hoy. Busca automatizar cotizaciones.</div></div><div class="sc">82</div></li>
+          <li><div><div class="nm">Grupo Pinar</div><div class="why">En negociación. Su última llamada ya tiene resumen.</div></div><div class="sc">79</div></li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -178,7 +214,7 @@ footer{margin-top:40px;font-size:13px;color:var(--ink-700)}
       <div class="card kpi"><div class="label">Cerrado este mes</div><div class="num">$310 k</div><div class="note">2 clientes nuevos</div></div>
     </div>
 
-    <div class="grid g2" style="margin-top:16px">
+    <div class="grid g2 mt">
       <div class="card">
         <h2>Deals por etapa</h2>
         <div class="sub">Cantidad de deals y valor</div>
@@ -189,6 +225,39 @@ footer{margin-top:40px;font-size:13px;color:var(--ink-700)}
         <div class="sub">Últimas 8 semanas</div>
         <div id="weeks"></div>
       </div>
+    </div>
+
+    <div class="grid g2 mt">
+      <div class="card">
+        <h2>Tendencia del pipeline</h2>
+        <div class="sub">Valor total de deals abiertos, en millones de pesos</div>
+        <div id="trend"></div>
+      </div>
+      <div class="card">
+        <h2>Tasa de cierre</h2>
+        <div class="sub">Porcentaje de deals que se cierran, por semana</div>
+        <div id="close"></div>
+      </div>
+    </div>
+
+    <div class="grid g2 mt">
+      <div class="card">
+        <h2>Ingresos cerrados por semana</h2>
+        <div class="sub">En miles de pesos</div>
+        <div id="revenue"></div>
+      </div>
+      <div class="card">
+        <h2>Comisión por semana</h2>
+        <div class="sub">10% del ingreso cerrado, en miles de pesos</div>
+        <div id="commission"></div>
+      </div>
+    </div>
+
+    <div class="card mt">
+      <h2>Calificación de llamadas por dimensión</h2>
+      <div class="sub">Promedio de las llamadas de los últimos 30 días, sobre 100</div>
+      <div class="bars" id="dims"></div>
+      <div class="callout">La dimensión más baja es manejo de objeciones (61). El coaching de esta semana se enfoca ahí.</div>
     </div>
 
     <h2 class="section-title">Deals activos</h2>
@@ -213,6 +282,30 @@ footer{margin-top:40px;font-size:13px;color:var(--ink-700)}
     </div>
   </section>
 
+  <!-- HERRAMIENTAS -->
+  <section class="tab" id="stack">
+    <p class="sub" style="font-size:15px">Las herramientas que alimentan este sistema. Cada una se conecta una sola vez y la información llega sola a la bóveda.</p>
+    <h2 class="section-title" style="margin-top:0">Equipo de ventas</h2>
+    <div class="grid g3">
+      <div class="card tool"><div class="cat">CRM</div><h3>HubSpot</h3><p>Etapas, valores y fechas de cada deal. Se sincroniza todos los días.</p><div class="state"><span class="state"><i></i>Conectado</span></div></div>
+      <div class="card tool"><div class="cat">Correo, calendario y hojas</div><h3>Google Workspace</h3><p>Reuniones del día, correos pendientes y la hoja de leads.</p><div class="state"><span class="state"><i></i>Conectado</span></div></div>
+      <div class="card tool"><div class="cat">Transcripción de llamadas</div><h3>Fathom</h3><p>Graba cada llamada y deja la transcripción en la bóveda.</p><div class="state"><span class="state"><i></i>Conectado</span></div></div>
+      <div class="card tool"><div class="cat">Propuestas</div><h3>PandaDoc</h3><p>Genera la propuesta y avisa cuando el cliente la firma.</p><div class="state"><span class="state"><i></i>Conectado</span></div></div>
+      <div class="card tool"><div class="cat">Llamadas</div><h3>Aircall</h3><p>Registra las llamadas salientes y su duración.</p><div class="state"><span class="state"><i></i>Conectado</span></div></div>
+      <div class="card tool"><div class="cat">Mensajes del equipo</div><h3>Slack</h3><p>Avisos de cierres, propuestas firmadas y deals fríos.</p><div class="state"><span class="state"><i></i>Conectado</span></div></div>
+    </div>
+    <h2 class="section-title">Búsqueda de leads y envíos</h2>
+    <div class="grid g3">
+      <div class="card tool"><div class="cat">Datos de la web y redes</div><h3>Apify</h3><p>Investiga empresas y personas en LinkedIn y en sus sitios web.</p><div class="state"><span class="state"><i></i>Conectado</span></div></div>
+      <div class="card tool"><div class="cat">Base de leads</div><h3>Apollo</h3><p>Contactos con puesto, correo y teléfono directo.</p><div class="state"><span class="state"><i></i>Conectado</span></div></div>
+      <div class="card tool"><div class="cat">Envíos en frío</div><h3>Lemlist</h3><p>Secuencias de correo y LinkedIn con seguimiento automático.</p><div class="state"><span class="state"><i></i>Conectado</span></div></div>
+    </div>
+    <h2 class="section-title">Publicación</h2>
+    <div class="grid g3">
+      <div class="card tool"><div class="cat">Alojamiento del tablero</div><h3>Vercel</h3><p>Publica esta página en un enlace que cualquiera del equipo puede abrir.</p><div class="state"><span class="state"><i></i>Conectado</span></div></div>
+    </div>
+  </section>
+
   <!-- AUTOMATIZACIONES -->
   <section class="tab" id="auto">
     <div class="card">
@@ -223,8 +316,57 @@ footer{margin-top:40px;font-size:13px;color:var(--ink-700)}
       <div class="run"><div><div class="name">Sincronización del CRM</div><div class="d">Actualiza la etapa de cada deal y marca los que llevan días sin respuesta.</div></div><span>Todos los días, 7:30</span><span>Hoy, 7:31</span><span class="state"><i></i>Activa</span></div>
       <div class="run"><div><div class="name">Seguimiento después de cada llamada</div><div class="d">Escribe el borrador del correo de seguimiento y la propuesta.</div></div><span>Al terminar una llamada</span><span>Ayer, 17:42</span><span class="state"><i></i>Activa</span></div>
       <div class="run"><div><div class="name">Calificación de llamadas</div><div class="d">Califica cada llamada y deja notas para mejorar la siguiente.</div></div><span>Lunes a viernes, 18:00</span><span>Ayer, 18:00</span><span class="state"><i></i>Activa</span></div>
+      <div class="run"><div><div class="name">Métricas de campañas</div><div class="d">Resume cuántos mensajes se enviaron, cuántos respondieron y cuántos agendaron.</div></div><span>Lunes, 8:00</span><span>Lun 24 nov, 8:00</span><span class="state"><i></i>Activa</span></div>
       <div class="run"><div><div class="name">Reporte mensual</div><div class="d">Resume el mes: reuniones, cierres, ingresos y qué ajustar.</div></div><span>Día 1 de cada mes</span><span>1 nov, 8:00</span><span class="state"><i></i>Activa</span></div>
+      <div class="run"><div><div class="name">Reporte trimestral</div><div class="d">Compara los 3 meses y propone la estrategia del siguiente trimestre.</div></div><span>Día 1 de cada trimestre</span><span>1 oct, 8:00</span><span class="state"><i></i>Activa</span></div>
       <div class="run"><div><div class="name">Actualización de este tablero</div><div class="d">Reconstruye esta página con lo último de la bóveda.</div></div><span>Todos los días, 8:00</span><span>Hoy, 8:00</span><span class="state"><i></i>Activa</span></div>
+    </div>
+  </section>
+
+  <!-- REPORTE MENSUAL -->
+  <section class="tab" id="mensual">
+    <div class="card">
+      <div class="overline">Reporte mensual</div>
+      <h2 style="font-size:24px;margin-top:6px">Octubre 2026</h2>
+      <div class="sub" style="margin-bottom:0">Generado solo el 1 de noviembre a las 8:00. Se compara contra septiembre.</div>
+    </div>
+
+    <div class="grid g4 mt">
+      <div class="card kpi"><div class="label">Ingresos cerrados</div><div class="num">$275 k</div><div class="delta">+$85 k vs. septiembre</div></div>
+      <div class="card kpi"><div class="label">Reuniones</div><div class="num">18</div><div class="delta">+4 vs. septiembre</div></div>
+      <div class="card kpi"><div class="label">Tasa de cierre</div><div class="num">20%</div><div class="delta">+3 puntos vs. septiembre</div></div>
+      <div class="card kpi"><div class="label">Ciclo de venta</div><div class="num">33 días</div><div class="delta">4 días menos que en septiembre</div></div>
+    </div>
+
+    <div class="grid g2 mt">
+      <div class="card">
+        <h2>Qué funcionó</h2>
+        <div class="sub">Lo que conviene repetir</div>
+        <ul class="list">
+          <li><strong>El seguimiento en las primeras 24 horas.</strong> Los deals con respuesta ese mismo día cerraron el doble.</li>
+          <li><strong>Las llamadas con resumen previo.</strong> Subieron 6 puntos en calificación.</li>
+          <li><strong>La campaña a despachos de arquitectura.</strong> 4 de cada 10 contestaron.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Qué ajustar</h2>
+        <div class="sub">Donde se perdió tiempo o dinero</div>
+        <ul class="list">
+          <li><strong>Manejo de objeciones.</strong> Es la dimensión más baja en las llamadas calificadas.</li>
+          <li><strong>6 deals sin contacto en más de 7 días.</strong> Dos de ellos ya tenían propuesta enviada.</li>
+          <li><strong>Propuestas sin fecha de cierre.</strong> 5 de 12 no tienen siguiente paso agendado.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card mt">
+      <h2>Prioridades de noviembre</h2>
+      <div class="sub">Propuestas por el sistema a partir de los datos del mes</div>
+      <ul class="list">
+        <li><strong>1.</strong> Preparar respuestas a las 3 objeciones más frecuentes y subirlas a Posicionamiento y objeciones.</li>
+        <li><strong>2.</strong> Recuperar los 6 deals fríos con un correo de seguimiento esta semana.</li>
+        <li><strong>3.</strong> Repetir la campaña de arquitectura con una lista nueva de 60 contactos.</li>
+      </ul>
     </div>
   </section>
 
@@ -241,8 +383,16 @@ const stages=[
   {n:"Negociación",c:3,v:410,col:"#A10F63"},
   {n:"Cerrado ganado",c:2,v:310,col:"#7E0C4D"}
 ];
-const weeks=[3,5,4,6,7,5,8,9];
 const wl=["S1","S2","S3","S4","S5","S6","S7","S8"];
+const weeks=[3,5,4,6,7,5,8,9];
+const trend=[1.7,1.8,1.9,2.0,2.1,2.2,2.3,2.4];
+const closeRate=[17,19,18,22,21,23,24,24];
+const revenue=[95,0,120,60,0,150,0,160];
+const commission=revenue.map(v=>v/10);
+const dims=[
+  ["Descubrimiento",78],["Escucha activa",84],["Manejo de objeciones",61],
+  ["Propuesta de valor",80],["Siguientes pasos",72],["Cierre",66]
+];
 const deals=[
   ["Aceros del Norte","Laura Méndez","Llamada agendada","Llamada hoy 10:30","11 nov",180],
   ["Estudio Cantera","Sofía Valdés","Propuesta enviada","Resolver objeción del equipo","21 nov",220],
@@ -262,23 +412,43 @@ function bindTips(root){
     el.addEventListener("mouseleave",()=>{tip.style.opacity=0});
   });
 }
+// gráfica de barras o de línea, un solo eje
+function chart(id,type,vals,o){
+  const W=480,H=210,pl=46,pr=8,pb=26,pt=12,ch=H-pb-pt,gap=(W-pl-pr)/vals.length;
+  const lo=o.min||0,hi=o.max,Y=v=>pt+ch-((v-lo)/(hi-lo))*ch;
+  let g="";
+  o.ticks.forEach(t=>{const y=Y(t);g+=`<line x1="${pl}" x2="${W-pr}" y1="${y}" y2="${y}" stroke="#E8D0D0" stroke-width="1"/><text x="${pl-8}" y="${y+4}" text-anchor="end" font-size="12" fill="#533F5B">${o.ft(t)}</text>`});
+  const cx=i=>pl+i*gap+gap/2;
+  if(type==="bar"){
+    const bw=26;
+    vals.forEach((v,i)=>{
+      const h=(v-lo)/(hi-lo)*ch,x=cx(i)-bw/2,y=pt+ch-h;
+      if(h>=6) g+=`<path d="M${x} ${y+h}V${y+4}Q${x} ${y} ${x+4} ${y}H${x+bw-4}Q${x+bw} ${y} ${x+bw} ${y+4}V${y+h}Z" fill="#E5158C"/>`;
+    });
+  } else {
+    const pts=vals.map((v,i)=>[cx(i),Y(v)]);
+    g+=`<path d="M${pts.map(p=>p.join(" ")).join("L")}" fill="none" stroke="#E5158C" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+    pts.forEach(p=>{g+=`<circle cx="${p[0]}" cy="${p[1]}" r="4" fill="#E5158C" stroke="#FFFFFF" stroke-width="2"/>`});
+  }
+  vals.forEach((v,i)=>{
+    g+=`<rect data-tip="${wl[i]}: ${o.tip(v)}" x="${pl+i*gap}" y="${pt}" width="${gap}" height="${ch}" fill="rgba(0,0,0,0)"/>`;
+    g+=`<text x="${cx(i)}" y="${H-8}" text-anchor="middle" font-size="12" fill="#533F5B">${wl[i]}</text>`;
+  });
+  document.getElementById(id).innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${o.label}">${g}</svg>`;
+}
 // etapas
 const maxV=Math.max(...stages.map(s=>s.v));
 document.getElementById("stages").innerHTML=stages.map(s=>
  `<div class="brow"><span>${s.n}</span><div class="track"><div data-tip="${s.n}: ${s.c} deals, ${fmt(s.v)}" style="width:${s.v/maxV*100}%;background:${s.col}"></div></div><span class="val">${s.c} deals · ${fmt(s.v)}</span></div>`).join("");
-// semanas
-(function(){
-  const W=480,H=210,pl=28,pb=26,pt=12,bw=34;
-  const max=10,ch=H-pb-pt,gap=(W-pl)/weeks.length;
-  let g="";
-  [0,5,10].forEach(t=>{const y=pt+ch-(t/max)*ch;g+=`<line x1="${pl}" x2="${W}" y1="${y}" y2="${y}" stroke="#E8D0D0" stroke-width="1"/><text x="${pl-8}" y="${y+4}" text-anchor="end" font-size="12" fill="#533F5B">${t}</text>`});
-  weeks.forEach((v,i)=>{
-    const h=v/max*ch,x=pl+i*gap+(gap-bw)/2,y=pt+ch-h;
-    g+=`<path data-tip="${wl[i]}: ${v} reuniones" d="M${x} ${y+h}V${y+4}Q${x} ${y} ${x+4} ${y}H${x+bw-4}Q${x+bw} ${y} ${x+bw} ${y+4}V${y+h}Z" fill="#E5158C"/>`;
-    g+=`<text x="${x+bw/2}" y="${H-8}" text-anchor="middle" font-size="12" fill="#533F5B">${wl[i]}</text>`;
-  });
-  document.getElementById("weeks").innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Reuniones agendadas por semana, últimas 8 semanas: ${weeks.join(', ')}">${g}</svg>`;
-})();
+// gráficas
+chart("weeks","bar",weeks,{max:10,ticks:[0,5,10],ft:t=>t,tip:v=>v+" reuniones",label:"Reuniones agendadas por semana, últimas 8 semanas: "+weeks.join(", ")});
+chart("trend","line",trend,{min:1.5,max:2.5,ticks:[1.5,2,2.5],ft:t=>"$"+t.toFixed(1)+" M",tip:v=>"$"+v.toFixed(1)+" M en deals abiertos",label:"Valor del pipeline por semana, de 1.7 a 2.4 millones de pesos"});
+chart("close","line",closeRate,{min:0,max:30,ticks:[0,10,20,30],ft:t=>t+"%",tip:v=>v+"% de cierre",label:"Tasa de cierre por semana, de 17% a 24%"});
+chart("revenue","bar",revenue,{max:200,ticks:[0,100,200],ft:t=>"$"+t+" k",tip:v=>fmt(v)+" cerrados",label:"Ingresos cerrados por semana en miles de pesos: "+revenue.join(", ")});
+chart("commission","bar",commission,{max:20,ticks:[0,10,20],ft:t=>"$"+t+" k",tip:v=>"$"+v.toFixed(1)+" k de comisión",label:"Comisión por semana en miles de pesos: "+commission.join(", ")});
+// calificación por dimensión
+document.getElementById("dims").innerHTML=dims.map(d=>
+ `<div class="srow"><span>${d[0]}</span><div class="track"><div data-tip="${d[0]}: ${d[1]} de 100" style="width:${d[1]}%"></div></div><span class="val">${d[1]}</span></div>`).join("");
 // deals
 document.getElementById("deals").innerHTML=deals.map(d=>
  `<tr><td><strong>${d[0]}</strong></td><td>${d[1]}</td><td><span class="stage"><span class="dot" style="background:${colOf[d[2]]}"></span>${d[2]}</span></td><td>${d[3]}</td><td>${d[4]}</td><td class="r">${fmt(d[5])}</td></tr>`).join("");
